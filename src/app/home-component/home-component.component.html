@@ -1,0 +1,60 @@
+<div id="container">
+  <div id="saludo">
+    <h1>Bienvenid@ <span>{{name}}</span></h1>
+  </div>
+  <div id="obtenerDatos" *ngIf="rol=='admin'">
+    <div class="mb-3">
+      <label for="Nombre" class="form-label">Nombre</label><br>
+      <input type="text" [(ngModel)]="studentName">
+    </div>
+    <div class="mb-3">
+      <label for="Dirección" class="form-label">Dirección</label><br>
+      <input type="text" [(ngModel)]="studentAddress">
+    </div>
+    <div class="mb-3">
+      <label for="Edad" class="form-label">Edad</label><br>
+      <input type="text" [(ngModel)]="studentAge">
+    </div>
+    <button class="btn btn-success" type="button" (click)="createRecord()">Guardar</button>
+  </div><br>
+  <h1 style="text-align: center;">Estudiantes Grado 11-B:</h1>
+  <table class=" table table-dark table-striped" *ngIf="rol=='admin'" >
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Opción 1</th>
+        <th scope="col">Opción 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let student of students'>
+        <td>{{student.data.Name}}</td>
+        <td>{{student.data.Address}}</td>
+        <td>{{student.data.Age}}</td>
+        <td><a class="btn btn-primary"  (click)="updateRecord(student.id)">Editar</a></td>
+        <td><a class="btn btn-danger"  (click)="removeRecord(student.id)">Eliminar</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class=" table table-dark table-striped" *ngIf="rol=='invitado'" >
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Edad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let student of students'>
+        <td>{{student.data.Name}}</td>
+        <td>{{student.data.Address}}</td>
+        <td>{{student.data.Age}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="btn_salir">
+    <button class="btn btn-danger" type="button" (click)="salir()">Salir</button>
+  </div>
+</div>

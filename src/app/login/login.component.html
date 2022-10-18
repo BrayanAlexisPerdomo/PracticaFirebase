@@ -1,0 +1,19 @@
+<div id="container">
+    <div id="form">
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="text" [(ngModel)]="correo" class="form-control">
+            <label class="form-label" for="form2Example1">Correo</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" [(ngModel)]="contra" class="form-control">
+            <label class="form-label" for="form2Example2">Contraseña</label>
+        </div>
+
+        <!-- Submit button -->
+        
+        <button class="btn btn-primary btn-block mb-4" type="button" (click)="validate()">Ingresar</button>
+    </div>
+</div>
